@@ -1,0 +1,30 @@
+.postBox{
+  display: flex;
+  width: 100%;
+  background-color: black;
+}
+.values{
+    border: 1px solid rgb(163, 158, 158);
+    width: 100%;
+    padding: 1px;
+}
+.values textarea{
+    width: 100%;
+    background-color: black;
+    color: aliceblue;
+    padding: 8px;
+}
+.postIng{
+    border: 1px solid rgb(173, 167, 167);
+    padding: 5px;
+    width: 10%;
+}
+.posticons{
+    background-color: black;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+}
