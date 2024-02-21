@@ -104,7 +104,7 @@ const PremiumCard = ({displayprice,disabled,postperDays,rupee,plan,title,zero,fr
   
 
   return (
-    <div className='w-[90%]'>
+    <div className='w-[90%] mt-2 m-auto'>
     <div className='border border-solid text-center p-4'>
      <h1 className='text-2xl'>{title} Plan</h1>
      <div className='text-left'>

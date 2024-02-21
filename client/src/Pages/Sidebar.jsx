@@ -97,6 +97,7 @@ const Sidebar = () => {
           <Link to={"/more"}>
             <SidebarLink text="Verification" Icon={CiCircleMore} />
           </Link>
+
         </div>
 
         <button className="hidden xl:inline ml-auto bg-[#1d9bf0] text-white rounded-full w-56 h-[52px] text-lg font-bold shadow-md hover:bg-[#1a8cd8]">
@@ -106,22 +107,6 @@ const Sidebar = () => {
         {user && (
           <Popover>
             <PopoverTrigger>
-
-              {/* <div className="w-[50%] text-[#d9d9d9] flex gap-1 items-center justify-center mt-auto hoverAnimation xl:ml-auto border p-1 rounded-full hover:bg-slate-700">
-                <img
-                  src={user?.ProfilePicture}
-                  alt="userpicture"
-                  referrerPolicy="no-referrer"
-                  className="h-10 w-10 rounded-full xl:mr-2.5"
-                />
-
-                <div className="hidden xl:inline leading-5">
-                  <h4 className="font-bold">{user?.name}</h4>
-                  <p className="text-[#6e767d]">@{user?.name.split(" ").join("")}</p>
-                </div>
-                <BsThreeDotsVertical className="h-5 hidden xl:inline ml-1" />
-              </div> */}
-
               <div className="xl:w-[50%] border rounded-full flex text-center items-center xl:pl-2 xl:pr-2  mt-auto hoverAnimation xl:ml-auto p-1 hover:bg-slate-700">
                    <div className="xl:w-[35%]">
                       <img src={user?.ProfilePicture}
@@ -184,17 +169,76 @@ const Sidebar = () => {
           <FaHome color="white" size={40} />
         </Link>
 
-        <Link to={"/explore"}>
-          <IoSearchOutline color="white" size={40} />
+        <Link to={"/more"}>
+          <CiCircleMore color="white" size={40} />
         </Link>
 
-        <Link to={"/notification"}>
-          <FaRegBell color="white" size={40} />
+        <Link to={"/premium"}>
+          <BsTwitterX color="white" size={40} />
         </Link>
 
-        <Link to={"/message"}>
+        {/* <Link to={"/message"}>
           <SlEnvolopeLetter color="white" size={40} />
-        </Link>
+        </Link> */}
+
+        {user && (
+          <Popover>
+            <PopoverTrigger>
+              <div className="xl:w-[50%] border rounded-full flex text-center items-center xl:pl-2 xl:pr-2  mt-auto hoverAnimation xl:ml-auto p-1 hover:bg-slate-700">
+                   <div className="xl:w-[35%]">
+                      <img src={user?.ProfilePicture}
+                        alt="userpicture"
+                        referrerPolicy="no-referrer"
+                        className="h-10 w-10 rounded-full xl:mr-2.5"/>
+                   </div>
+
+                   <div className="hidden xl:inline leading-5 w-[100%]">
+                      <h4 className="text-white">{user?.name}</h4>
+                      <p className="text-[#6e767d]">@{user?.name.split(" ").join("")}</p>
+                   </div>
+
+                   <div className="w-[10%]">
+                      <BsThreeDotsVertical color="white" className="h-5 hidden xl:inline ml-1"/>
+                   </div>
+              </div>
+
+            </PopoverTrigger>
+            <Portal>
+              <PopoverContent>
+                <PopoverArrow />
+                <PopoverHeader>Header</PopoverHeader>
+                <PopoverCloseButton />
+                <PopoverBody>
+                  <Button
+                    w={"100%"}
+                    bg={"black"}
+                    color={"white"}
+                    onClick={async () => {
+                      handleSignout();
+                      const success = await signOut();
+                      if (success) {
+                        localStorage.removeItem('token')
+                        toast({
+                          title: 'Logout Success',
+                          status: 'success',
+                          duration: 5000,
+                          isClosable: true,
+                         })
+                         navigate('/login')
+                      }
+                    }}
+                  >
+                    Log out{" "}
+                    <span style={{ fontSize: "10px", paddingLeft: "10px" }}>
+                      {user?.email}
+                    </span>
+                  </Button>
+                </PopoverBody>
+                <PopoverFooter>This is the footer</PopoverFooter>
+              </PopoverContent>
+            </Portal>
+          </Popover>
+        )}
       </div>
     </>
   );
