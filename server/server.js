@@ -19,6 +19,9 @@ app.use('/api/bookmarks',BookmarksRoute);
 app.use('/api/comment',CommentRoute);
 app.use('/api/payment',PaymentRoute);
 
+const path = require('path');
+__dirname=path.resolve();
+
 
 
 if(process.env.NODE_ENV === 'production'){
